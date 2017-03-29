@@ -12,13 +12,13 @@ class RestaurantTableVC: UITableViewController {
     
     var restaurants = [
         Restaurant(name: "Coya", type: "Latin American", location: "Four Seasons Resort Dubai at Jumeirah Beach - Jumeirah", image: "ogonek.jpg", isVisited: false),
-        Restaurant(name: "Play Restaurant and Lounge", type: "Bar Food", location: "The H Dubai - Sheikh Zayed Road", image: "elu.jpg", isVisited: false),
+        Restaurant(name: "Play Restaurant&Lounge", type: "Bar Food", location: "The H Dubai - Sheikh Zayed Road", image: "elu.jpg", isVisited: false),
         Restaurant(name: "Pai Thai", type: "Thai,South East Asian", location: "Al Qasr Hotel, Madinat Jumeirah - Umm Suqeim", image: "bonsai.jpg", isVisited: false),
         Restaurant(name: "The Hide", type: "American,Steakhouses", location: "Al Qasr Hotel, Madinat Jumeirah - Umm Suqeim", image: "dastarhan.jpg", isVisited: false),
         Restaurant(name: "Nusr-Et", type: "Turkish", location: "Four Seasons Resort Dubai at Jumeirah Beach - Jumeirah", image: "indokitay.jpg", isVisited: false),
         Restaurant(name: "Zuma", type: "Japanese", location: "DIFC", image: "x.o.jpg", isVisited: false),
-        Restaurant(name: "Solo Bistronomia & Vino Bar", type: "Italian", location: "Raffles Dubai - Oud Metha", image: "balkan.jpg", isVisited: false),
-        Restaurant(name: "Rang Mahal by Atul Kochhar", type: "Indian", location: "JW Marriott Marquis Hotel Dubai - Sheikh Zayed Road", image: "respublika.jpg", isVisited: false),
+        Restaurant(name: "Solo Bistronomia", type: "Italian", location: "Raffles Dubai - Oud Metha", image: "balkan.jpg", isVisited: false),
+        Restaurant(name: "Rang Mahal", type: "Indian", location: "JW Marriott Marquis Hotel Dubai - Sheikh Zayed Road", image: "respublika.jpg", isVisited: false),
         Restaurant(name: "La Petite Maison", type: "French", location: "DIFC", image: "speakeasy.jpg", isVisited: false),
         Restaurant(name: "BOCA", type: "Mediterranean", location: "DIFC", image: "morris.jpg", isVisited: false),
         Restaurant(name: "Hakkasan", type: "Chinese", location: "Jumeirah Emirates Towers - Sheikh Zayed Road", image: "istorii.jpg", isVisited: false),

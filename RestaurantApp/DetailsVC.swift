@@ -15,7 +15,9 @@ class DetailsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var rateBtn: UIButton!
     
     @IBAction func unwindSegue(segue: UIStoryboardSegue) {
-        
+        guard let svc = segue.source as? RateVC else { return }
+        guard let rating = svc.restRating else { return }
+        rateBtn.setImage(UIImage(named: rating), for: .normal)
     }
     
     var restaurant: Restaurant?
