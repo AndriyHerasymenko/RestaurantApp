@@ -13,6 +13,7 @@ class DetailsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var rateBtn: UIButton!
+    @IBOutlet weak var mapBtn: UIButton!
     
     @IBAction func unwindSegue(segue: UIStoryboardSegue) {
         guard let svc = segue.source as? RateVC else { return }
@@ -29,15 +30,21 @@ class DetailsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+                
+        
+        let buttons = [rateBtn, mapBtn]
+        
+        for button in buttons {
+            guard let button = button else { return }
+            button.layer.cornerRadius = 5
+            button.layer.borderWidth = 1
+            button.layer.borderColor = UIColor.white.cgColor
+        }
         
         tableView.estimatedRowHeight = 38
         tableView.rowHeight = UITableViewAutomaticDimension
         
         imageView.image = UIImage(named: restaurant!.image)
-        
-        rateBtn.layer.cornerRadius = 5
-        rateBtn.layer.borderWidth = 1
-        rateBtn.layer.borderColor = UIColor.white.cgColor
         
         tableView.tableFooterView = UIView(frame: .zero)
         title = restaurant!.name
@@ -82,6 +89,12 @@ class DetailsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "mapSegue" {
+            let destinationVC = segue.destination as! MapVC
+            destinationVC.restaurant = restaurant
+        }
+    }
     
     
 }

@@ -11,7 +11,7 @@ import UIKit
 class RestaurantTableVC: UITableViewController {
     
     var restaurants = [
-        Restaurant(name: "Coya", type: "Latin American", location: "Four Seasons Resort Dubai at Jumeirah Beach - Jumeirah", image: "ogonek.jpg", isVisited: false),
+        Restaurant(name: "Coya", type: "Latin American", location: "Four Seasons Resort Jumeirah Beach Road", image: "ogonek.jpg", isVisited: false),
         Restaurant(name: "Play Restaurant&Lounge", type: "Bar Food", location: "The H Dubai - Sheikh Zayed Road", image: "elu.jpg", isVisited: false),
         Restaurant(name: "Pai Thai", type: "Thai,South East Asian", location: "Al Qasr Hotel, Madinat Jumeirah - Umm Suqeim", image: "bonsai.jpg", isVisited: false),
         Restaurant(name: "The Hide", type: "American,Steakhouses", location: "Al Qasr Hotel, Madinat Jumeirah - Umm Suqeim", image: "dastarhan.jpg", isVisited: false),
@@ -26,6 +26,10 @@ class RestaurantTableVC: UITableViewController {
         Restaurant(name: "JW’s Steakhouse", type: "Steakhouses", location: "JW Marriott Dubai - Deira", image: "love.jpg", isVisited: false),
         Restaurant(name: "Ossiano", type: "Seafood", location: "Atlantis The Palm - Palm Jumeirah", image: "shok.jpg", isVisited: false),
         Restaurant(name: "At.mosphere", type: "European,Steakhouses", location:  "Downtown Dubai", image: "bochka.jpg", isVisited: false)]
+    
+    @IBAction func close(segue: UIStoryboardSegue) {
+        
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.hidesBarsOnSwipe = true
@@ -97,6 +101,7 @@ class RestaurantTableVC: UITableViewController {
             }
         }
     }
+    
     
 
     

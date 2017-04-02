@@ -17,6 +17,9 @@
 		F45155A21E8907840098E5D4 /* DetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45155A11E8907840098E5D4 /* DetailsVC.swift */; };
 		F45155A41E8912E40098E5D4 /* DetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45155A31E8912E40098E5D4 /* DetailCell.swift */; };
 		F45155A61E8AD69B0098E5D4 /* RateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45155A51E8AD69B0098E5D4 /* RateVC.swift */; };
+		F4BA3C0E1E913F20004A7B0A /* NewRestaurantTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BA3C0D1E913F20004A7B0A /* NewRestaurantTableVC.swift */; };
+		F4DB645B1E8E665600E8862D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4DB645A1E8E665600E8862D /* MapKit.framework */; };
+		F4FE20E01E8E909D0034A5DC /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FE20DF1E8E909D0034A5DC /* MapVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +35,9 @@
 		F45155A11E8907840098E5D4 /* DetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsVC.swift; sourceTree = "<group>"; };
 		F45155A31E8912E40098E5D4 /* DetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailCell.swift; sourceTree = "<group>"; };
 		F45155A51E8AD69B0098E5D4 /* RateVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RateVC.swift; sourceTree = "<group>"; };
+		F4BA3C0D1E913F20004A7B0A /* NewRestaurantTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewRestaurantTableVC.swift; sourceTree = "<group>"; };
+		F4DB645A1E8E665600E8862D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		F4FE20DF1E8E909D0034A5DC /* MapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4DB645B1E8E665600E8862D /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,6 +57,7 @@
 			children = (
 				F45155881E8806CB0098E5D4 /* RestaurantApp */,
 				F45155871E8806CB0098E5D4 /* Products */,
+				F4DB64591E8E665600E8862D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +75,8 @@
 				F45155891E8806CB0098E5D4 /* AppDelegate.swift */,
 				F451559B1E88072F0098E5D4 /* RestaurantTableVC.swift */,
 				F451558D1E8806CB0098E5D4 /* Main.storyboard */,
+				F4BA3C0D1E913F20004A7B0A /* NewRestaurantTableVC.swift */,
+				F4FE20DF1E8E909D0034A5DC /* MapVC.swift */,
 				F45155A11E8907840098E5D4 /* DetailsVC.swift */,
 				F45155A31E8912E40098E5D4 /* DetailCell.swift */,
 				F45155A51E8AD69B0098E5D4 /* RateVC.swift */,
@@ -77,6 +87,14 @@
 				F45155951E8806CB0098E5D4 /* Info.plist */,
 			);
 			path = RestaurantApp;
+			sourceTree = "<group>";
+		};
+		F4DB64591E8E665600E8862D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F4DB645A1E8E665600E8862D /* MapKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -113,6 +131,11 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = NWLTFVL62E;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -157,7 +180,9 @@
 				F45155A41E8912E40098E5D4 /* DetailCell.swift in Sources */,
 				F451559C1E88072F0098E5D4 /* RestaurantTableVC.swift in Sources */,
 				F451558A1E8806CB0098E5D4 /* AppDelegate.swift in Sources */,
+				F4FE20E01E8E909D0034A5DC /* MapVC.swift in Sources */,
 				F45155A61E8AD69B0098E5D4 /* RateVC.swift in Sources */,
+				F4BA3C0E1E913F20004A7B0A /* NewRestaurantTableVC.swift in Sources */,
 				F45155A21E8907840098E5D4 /* DetailsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -324,6 +349,7 @@
 				F451559A1E8806CB0098E5D4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
