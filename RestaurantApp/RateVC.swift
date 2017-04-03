@@ -25,6 +25,18 @@ class RateVC: UIViewController {
         default: break
         }
         
+        if let context = (UIApplication.shared.delegate as? AppDelegate)?.coreDataStack.persistentContainer.viewContext {
+            let restaurant = Restaurant(context: context)
+            restaurant.rate = restRating
+            
+            do {
+                try context.save()
+                print("Rating saved")
+            } catch let error as NSError {
+                print("Cant sve rating \(error), \(error.userInfo)")
+            }
+        }
+        
         performSegue(withIdentifier: "unwindSegueToDVC", sender: sender)
         
     }

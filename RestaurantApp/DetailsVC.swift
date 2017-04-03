@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class DetailsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -14,6 +15,8 @@ class DetailsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var rateBtn: UIButton!
     @IBOutlet weak var mapBtn: UIButton!
+    
+//    var fetchResultController: NSFetchedResultsController<Restaurant>!
     
     @IBAction func unwindSegue(segue: UIStoryboardSegue) {
         guard let svc = segue.source as? RateVC else { return }
@@ -44,10 +47,22 @@ class DetailsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         tableView.estimatedRowHeight = 38
         tableView.rowHeight = UITableViewAutomaticDimension
         
-        imageView.image = UIImage(named: restaurant!.image)
+        imageView.image = UIImage(data: restaurant!.image! as Data)
         
         tableView.tableFooterView = UIView(frame: .zero)
         title = restaurant!.name
+        
+//        let fetchRequest: NSFetchRequest<Restaurant> = Restaurant.fetchRequest()
+//        if let context = (UIApplication.shared.delegate as? AppDelegate)?.coreDataStack.persistentContainer.viewContext {
+//            fetchResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+//            
+//            do {
+//                try fetchResultController.performFetch()
+//                //rateBtn = fetchResultController.fetchedObjects!
+//            } catch let error as NSError {
+//                print(error.localizedDescription)
+//            }
+//        }
         
     }
     

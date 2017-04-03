@@ -85,7 +85,7 @@
                     <navigationItem key="navigationItem" title="Restaurants" id="kTD-U0-MZZ">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="jyl-d9-aDj">
                             <connections>
-                                <segue destination="hc0-z7-bzo" kind="presentation" modalTransitionStyle="crossDissolve" id="3yl-c9-gze"/>
+                                <segue destination="hc0-z7-bzo" kind="presentation" identifier="addRestaurant" modalTransitionStyle="crossDissolve" id="3yl-c9-gze"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -94,7 +94,7 @@
             </objects>
             <point key="canvasLocation" x="822" y="-60"/>
         </scene>
-        <!--New Restaurant TableVC-->
+        <!--New Restaurant-->
         <scene sceneID="wgi-ND-1Ni">
             <objects>
                 <tableViewController id="cSN-iI-4b5" customClass="NewRestaurantTableVC" customModule="RestaurantApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -114,7 +114,7 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo" translatesAutoresizingMaskIntoConstraints="NO" id="fOa-AD-UhL">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
-                                                    <color key="backgroundColor" red="0.75208927360445577" green="0.75871554325808999" blue="0.78838832487309651" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" red="0.85988559001157572" green="0.87250778387924022" blue="0.91037436548223361" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -165,13 +165,13 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="74.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X2t-8L-Ihh">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X2t-8L-Ihh">
                                                     <rect key="frame" x="16" y="8" width="351" height="28"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="20"/>
                                                     <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Restaurant address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PY4-8L-eec">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Restaurant location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PY4-8L-eec">
                                                     <rect key="frame" x="16" y="36" width="351" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="V12-Eh-vsn"/>
@@ -231,7 +231,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="74.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Have You been here?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CEI-ne-1ia">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Have You Been Here?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CEI-ne-1ia">
                                                     <rect key="frame" x="16" y="8" width="351" height="27.5"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="20"/>
                                                     <color key="textColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -285,7 +285,7 @@
                             <outlet property="delegate" destination="cSN-iI-4b5" id="g3L-k3-wJa"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="LUP-ds-yIb">
+                    <navigationItem key="navigationItem" title="New Restaurant" id="LUP-ds-yIb">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="VWg-AJ-5v6">
                             <connections>
                                 <segue destination="crP-bO-mGD" kind="unwind" identifier="unwindSegueFromNewRest" unwindAction="closeWithSegue:" id="jiU-ce-PTs"/>
@@ -298,10 +298,12 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="addressTxtField" destination="PY4-8L-eec" id="xoI-LQ-fL1"/>
+                        <outlet property="cancelBtn" destination="VWg-AJ-5v6" id="0vQ-UQ-lrL"/>
                         <outlet property="imageView" destination="fOa-AD-UhL" id="fBD-Vw-BgK"/>
+                        <outlet property="locationTxtField" destination="PY4-8L-eec" id="Ukx-NP-dxN"/>
                         <outlet property="nameTxtField" destination="6mb-0q-09X" id="69f-cZ-kc8"/>
                         <outlet property="noBtn" destination="HyX-7u-grt" id="nQl-rD-QQ4"/>
+                        <outlet property="saveBtn" destination="bfv-cR-CsY" id="aPC-nq-rx6"/>
                         <outlet property="typeTxtField" destination="xps-S2-ksd" id="yJc-3L-3fL"/>
                         <outlet property="yesBtn" destination="0yF-ht-wln" id="wBz-2I-GNO"/>
                     </connections>
