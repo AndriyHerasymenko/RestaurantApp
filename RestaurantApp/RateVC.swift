@@ -15,6 +15,7 @@ class RateVC: UIViewController {
     @IBOutlet weak var brilliantBtn: UIButton!
     
     var restRating: String?
+    var restaurant: Restaurant?
     
     @IBAction func rateRestaurant(sender: UIButton) {
         
@@ -26,6 +27,7 @@ class RateVC: UIViewController {
         }
         
         if let context = (UIApplication.shared.delegate as? AppDelegate)?.coreDataStack.persistentContainer.viewContext {
+            
             let restaurant = Restaurant(context: context)
             restaurant.rate = restRating
             

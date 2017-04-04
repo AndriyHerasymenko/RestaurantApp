@@ -12,7 +12,10 @@ import CoreData
 class RestaurantTableVC: UITableViewController, NSFetchedResultsControllerDelegate {
     
     var fetchResultController: NSFetchedResultsController<Restaurant>!
+    var searchController: UISearchController!
+    var filteredResultArray: [Restaurant] = []
     var restaurants: [Restaurant] = []
+    
 //        Restaurant(name: "Coya", type: "Latin American", location: "Four Seasons Resort Jumeirah Beach Road", image: "ogonek.jpg", isVisited: false),
 //        Restaurant(name: "Play Restaurant&Lounge", type: "Bar Food", location: "The H Dubai - Sheikh Zayed Road", image: "elu.jpg", isVisited: false),
 //        Restaurant(name: "Pai Thai", type: "Thai,South East Asian", location: "Al Qasr Hotel, Madinat Jumeirah - Umm Suqeim", image: "bonsai.jpg", isVisited: false),
@@ -34,11 +37,29 @@ class RestaurantTableVC: UITableViewController, NSFetchedResultsControllerDelega
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        navigationController?.hidesBarsOnSwipe = true
+        navigationController?.hidesBarsOnSwipe = false
+    }
+    
+    func filteredContentFor(searchText text: String) {
+        
+        filteredResultArray = restaurants.filter{ (restaurant) -> Bool in
+            
+            return(restaurant.name?.lowercased().contains(text.lowercased()))!
+            
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        tableView.tableHeaderView = searchController.searchBar
+        searchController.searchBar.delegate = self
+        searchController.searchBar.barTintColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
+        searchController.searchBar.tintColor = .white
+        definesPresentationContext = true
         
         tableView.estimatedRowHeight = 85
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -94,21 +115,34 @@ class RestaurantTableVC: UITableViewController, NSFetchedResultsControllerDelega
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if searchController.isActive && searchController.searchBar.text != "" {
+            return filteredResultArray.count
+        }
         return restaurants.count
+    }
+    
+    func restaurantToDisplayAt(indexPath: IndexPath) -> Restaurant {
+        let restaurant: Restaurant
+        if searchController.isActive && searchController.searchBar.text != "" {
+            restaurant = filteredResultArray[indexPath.row]
+        } else {
+            restaurant = restaurants[indexPath.row]
+        }
+        return restaurant
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RestaurantCell", for: indexPath) as! RestaurantCell
-        
-        cell.mainImgView.image = UIImage(data: restaurants[indexPath.row].image as! Data)
+        let restaurant = restaurantToDisplayAt(indexPath: indexPath)
+        cell.mainImgView.image = UIImage(data: restaurant.image as! Data)
         cell.mainImgView.layer.cornerRadius = 32.5
         cell.mainImgView.clipsToBounds = true
         
-        cell.nameLbl.text = restaurants[indexPath.row].name
-        cell.typeLbl.text = restaurants[indexPath.row].type
-        cell.locationLbl.text = restaurants[indexPath.row].location
+        cell.nameLbl.text = restaurant.name
+        cell.typeLbl.text = restaurant.type
+        cell.locationLbl.text = restaurant.location
         
-        cell.accessoryType = self.restaurants[indexPath.row].isVisited ? .checkmark : .none
+        cell.accessoryType = restaurant.isVisited ? .checkmark : .none
         
         return cell
     }
@@ -150,7 +184,7 @@ class RestaurantTableVC: UITableViewController, NSFetchedResultsControllerDelega
         if segue.identifier == "detailSegue" {
             if let indexPath = tableView.indexPathForSelectedRow {
                 let destinationVC = segue.destination as! DetailsVC
-                destinationVC.restaurant = self.restaurants[indexPath.row]
+                destinationVC.restaurant = restaurantToDisplayAt(indexPath: indexPath)
             }
         }
     }
@@ -159,3 +193,28 @@ class RestaurantTableVC: UITableViewController, NSFetchedResultsControllerDelega
 
     
 }
+
+extension RestaurantTableVC: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        
+        filteredContentFor(searchText: searchController.searchBar.text!)
+        tableView.reloadData()
+    }
+}
+
+extension RestaurantTableVC: UISearchBarDelegate {
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        if searchBar.text == "" {
+            navigationController?.hidesBarsOnSwipe = false
+        }
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        navigationController?.hidesBarsOnSwipe = true
+    }
+}
+
+
+

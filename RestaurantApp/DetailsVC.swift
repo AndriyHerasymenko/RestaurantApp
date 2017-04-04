@@ -55,10 +55,10 @@ class DetailsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
 //        let fetchRequest: NSFetchRequest<Restaurant> = Restaurant.fetchRequest()
 //        if let context = (UIApplication.shared.delegate as? AppDelegate)?.coreDataStack.persistentContainer.viewContext {
 //            fetchResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
-//            
+//
 //            do {
 //                try fetchResultController.performFetch()
-//                //rateBtn = fetchResultController.fetchedObjects!
+//                rateBtn.setImage(UIImage(named: (restaurant?.rate)!), for: .normal)
 //            } catch let error as NSError {
 //                print(error.localizedDescription)
 //            }
@@ -108,6 +108,10 @@ class DetailsVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         if segue.identifier == "mapSegue" {
             let destinationVC = segue.destination as! MapVC
             destinationVC.restaurant = restaurant
+        }
+        if segue.identifier == "detailSegue" {
+            let destinationRateVC = segue.destination as! RateVC
+            destinationRateVC.restaurant = restaurant
         }
     }
     
